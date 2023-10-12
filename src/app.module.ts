@@ -12,7 +12,20 @@ import { CccModule } from './ccc/ccc.module';
       aaa: 1,
       bbb: 2,
     }),
-    CccModule,
+    CccModule.register({
+      aaa: 2,
+      bbb: '333',
+    }),
+    CccModule.registerAsync({
+      useFactory: async () => {
+        await 111;
+        return {
+          aaa: 222,
+          bbb: 'bbb-hhh',
+        };
+      },
+      inject: [],
+    }),
   ],
   controllers: [AppController],
   providers: [AppService],
